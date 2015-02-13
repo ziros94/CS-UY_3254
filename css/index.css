@@ -1,6 +1,8 @@
+
 input[type=text]:focus,input[type=password]:focus{
     @include box-shadow(0 0 5px rgba(81, 203, 238, 1));
     border: 2px solid rgba(81, 203, 238, 1);
+    /*box-shadow: 0 0 5px rgba(81, 203, 238, 1);*/
 }
 input{
     padding: 0 3px;
@@ -10,21 +12,53 @@ input{
     margin-right: 0;
     border: 2px solid #dd9455;
     border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
+
     outline:0;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
 }
 #login_btn{
+    font-family: 'Dosis', sans-serif;
+    vertical-align: middle;
+    font-size: 16px ;
     outline: 0;
     width:80px;
-    height: 30px;
-    padding: 2px 3px;
+    height: 36px;
+    padding: 0 3px;
     text-align: center;
     background: white;
     border: 2px solid #DB9255;
     border-radius: 10px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
     cursor: pointer;
+    color: #db7731;
+}
+#login_btn:hover{
+    background: #DB9255;
+    color: white;
+}
+.header{
+    padding: 20px;
+    text-align: justify;
+
+}
+.header:after{
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 0;
+    font-size:0;
+    line-height:0;
+}
+.logo{
+    display: inline-block;
+
+
+}
+.login {
+    display: inline-block;
+    vertical-align: baseline;
 }

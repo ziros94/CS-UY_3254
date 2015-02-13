@@ -2,18 +2,27 @@
 <html>
 <head>
     <title>Twitter v2.0</title>
+    <link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
     <link href="css/index.css" rel="stylesheet">
 </head>
 <body>
-    <div style="padding: 20px;">
-        <form method="post" action="check_login.php">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password">
-            <button type="submit" id="login_btn" name="login">Log In</button>
-        </form>
+    <div class="header" >
+        <div class="logo">
+            <h1 style="font-family: 'Dosis', sans-serif;">CommunityBlock</h1>
+        </div>
+        <div class="login">
+            <form method="post" action="check_login.php">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+                <button type="submit" id="login_btn" name="login">Log In</button>
+            </form>
+        </div>
+
     </div>
+
+
 
 </body>
 </html>
