@@ -1,0 +1,30 @@
+input[type=text]:focus,input[type=password]:focus{
+    @include box-shadow(0 0 5px rgba(81, 203, 238, 1));
+    border: 2px solid rgba(81, 203, 238, 1);
+}
+input{
+    padding: 0 3px;
+    height: 30px;
+    width: 160px;
+    margin-left:0;
+    margin-right: 0;
+    border: 2px solid #dd9455;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    outline:0;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+#login_btn{
+    outline: 0;
+    width:80px;
+    height: 30px;
+    padding: 2px 3px;
+    text-align: center;
+    background: white;
+    border: 2px solid #DB9255;
+    border-radius: 10px;
+    cursor: pointer;
+}
