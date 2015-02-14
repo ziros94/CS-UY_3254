@@ -4,6 +4,14 @@ input[type=text]:focus,input[type=password]:focus{
     border: 2px solid rgba(81, 203, 238, 1);
     /*box-shadow: 0 0 5px rgba(81, 203, 238, 1);*/
 }
+body{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 input{
     padding: 0 3px;
     height: 30px;
