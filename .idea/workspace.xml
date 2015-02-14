@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a1082cbb-34d4-41a7-8396-50207a949a18" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/index.css" afterPath="$PROJECT_DIR$/css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="CS-UY_3254.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,19 +25,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/index.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="0" selection-start="1355" selection-end="1355" vertical-scroll-proportion="0.0" vertical-offset="589" max-vertical-offset="1173">
+            <state line="21" column="37" selection-start="614" selection-end="614" vertical-scroll-proportion="0.26198632" vertical-offset="204" max-vertical-offset="1224">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="25" selection-start="393" selection-end="393" vertical-scroll-proportion="0.3655914" vertical-offset="0" max-vertical-offset="561">
+            <state line="12" column="25" selection-start="393" selection-end="393" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="561">
               <folding>
                 <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -233,19 +232,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="0" selection-start="1355" selection-end="1355" vertical-scroll-proportion="0.0" vertical-offset="589" max-vertical-offset="1173">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="25" selection-start="393" selection-end="393" vertical-scroll-proportion="0.3655914" vertical-offset="0" max-vertical-offset="561">
+        <state line="12" column="25" selection-start="393" selection-end="393" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="561">
           <folding>
             <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="37" selection-start="614" selection-end="614" vertical-scroll-proportion="0.26198632" vertical-offset="204" max-vertical-offset="1224">
+          <folding />
         </state>
       </provider>
     </entry>
