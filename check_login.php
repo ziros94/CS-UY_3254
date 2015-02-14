@@ -14,16 +14,12 @@ $user_count=0;
 foreach($lines as $line){
     $pieces = explode(",",$line);
     if(strcasecmp($username,$pieces[0]) === 0 && $password === $pieces[1]){
-        $user_count++;
-        echo $pieces[0].$pieces[1];
+        $_SESSION['username'] = $username;
+        $_SESSION['logged_in'] = true;
+        header("Location:login_success.php");
+        break;
     }
 }
-if ($user_count === 1){
-    $_SESSION['username'] = $username;
-    $_SESSION['logged_in'] = true;
-    header("Location:login_success.php");
-}
-else{
-    echo "Wrong username or password";
-}
+echo "Wrong username or password";
+
 ob_end_flush();

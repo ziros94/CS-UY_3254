@@ -18,10 +18,10 @@ input{
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
 }
-label{
+label,button,.logo h1{
     font-family: 'Dosis', sans-serif;
 }
-#login_btn{
+#login_btn,#signup_btn{
     font-family: 'Dosis', sans-serif;
     vertical-align: middle;
     font-size: 16px ;
@@ -39,12 +39,14 @@ label{
     cursor: pointer;
     color: #db7731;
 }
-#login_btn:hover{
+#login_btn:hover,#signup_btn:hover{
     background: #DB9255;
     color: white;
 }
 .header{
-    padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
     text-align: justify;
 
 }
@@ -58,10 +60,31 @@ label{
 }
 .logo{
     display: inline-block;
-
-
+}
+.logo a{
+    text-decoration: none !important;
+    outline: none;
+    color:#DB7731;
 }
 .login {
     display: inline-block;
     vertical-align: baseline;
+}
+.signup{
+    display: block;
+    padding: 50px 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    width:310px;
+    margin-left: 40%;
+    text-align: center;
+}
+.signup label, .signup input{
+    display:inline-block;
+}
+.signup label{
+    width:100px;
+}
+.form-group{
+    padding-bottom: 5px;
 }

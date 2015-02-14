@@ -8,11 +8,11 @@
 session_start();
 if (!isset($_SESSION['logged_in']))
 {
-    header("Location:index.html");
+    header("Location:index.php");
 }
 $username = $_SESSION['username']
 ?>
-
+<!DOCTYPE html>
 <html>
 <head>
 <Title>News Feed</Title>
