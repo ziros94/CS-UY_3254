@@ -1,4 +1,3 @@
-
 input[type=text]:focus,input[type=password]:focus{
     @include box-shadow(0 0 5px rgba(81, 203, 238, 1));
     border: 2px solid rgba(81, 203, 238, 1);
@@ -13,21 +12,33 @@ body{
     user-select: none;
 }
 input{
-    padding: 0 3px;
+    padding: 5px;
     height: 30px;
     width: 160px;
-    margin-left:0;
-    margin-right: 0;
     border: 2px solid #dd9455;
     border-radius: 10px;
-
-    outline:0;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
+    background-clip: content-box; /* support: IE9+ */
+    background-color: #ddbd28;
+    outline: none;
+    text-indent: .5rem;
 }
 label,button,.logo h1{
     font-family: 'Dosis', sans-serif;
+}
+.header{
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: justify;
+    border-bottom: 2px solid #DB9255;
+
+}
+.header:after{
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 0;
+    font-size:0;
+    line-height:0;
 }
 #login_btn,#signup_btn{
     font-family: 'Dosis', sans-serif;
@@ -51,28 +62,27 @@ label,button,.logo h1{
     background: #DB9255;
     color: white;
 }
-.header{
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    text-align: justify;
 
-}
-.header:after{
-    content: '';
-    display: inline-block;
-    width: 100%;
-    height: 0;
-    font-size:0;
-    line-height:0;
-}
 .logo{
     display: inline-block;
+    border: 2px solid #dd9455;
+    border-radius: 10px;
+    background-clip: padding-box; /* support: IE9+ */
+    background-color: #ddbd28;
+    padding: 5px;
 }
 .logo a{
     text-decoration: none !important;
     outline: none;
-    color:#DB7731;
+    color:inherit;
+}
+.logo h1{
+    color:white;
+    text-shadow: 0 0 2px #DB7731;
+}
+.logo h1:hover{
+    color:black;
+    text-shadow: 0 0 2px rgb(255, 82, 42);
 }
 .login {
     display: inline-block;
@@ -81,11 +91,12 @@ label,button,.logo h1{
 .signup{
     display: block;
     padding: 50px 20px;
-    border: 2px solid black;
+    border: 2px solid #DB7731;
     border-radius: 10px;
     width:310px;
     margin-left: 40%;
     text-align: center;
+    margin-top: 20px;
 }
 .signup label, .signup input{
     display:inline-block;
@@ -95,4 +106,95 @@ label,button,.logo h1{
 }
 .form-group{
     padding-bottom: 5px;
+}
+.form-group input{
+    text-align: center;
+}
+/* Place Holder CSS */
+::-webkit-input-placeholder {
+    text-align: center;
+    opacity: 0.75;
+    -webkit-transition: opacity 0.35s ease-in-out;
+    transition: opacity 0.35s ease-in-out;
+    color:black;
+}
+:-moz-placeholder {
+    text-align: center;
+    opacity: 0.75;
+    -moz-transition: opacity 0.35s ease-in-out;
+    transition: opacity 0.35s ease-in-out;
+}
+::-moz-placeholder {
+    text-align: center;
+    opacity: 0.75;
+    -moz-transition: opacity 0.35s ease-in-out;
+    transition: opacity 0.35s ease-in-out;
+}
+:-ms-input-placeholder {
+    text-align: center;
+    opacity: 0.75;
+    -ms-transition: opacity 0.35s ease-in-out;
+    transition: opacity 0.35s ease-in-out;
+}
+
+/* Place Holder CSS for hover */
+:hover::-webkit-input-placeholder {
+    opacity: 1;
+    -webkit-transition: opacity 0.35s ease-in-out;
+    transition: opacity 0.35s ease-in-out;
+}
+:hover:-moz-placeholder {
+    opacity: 1;
+    -moz-transition: opacity 0.35s ease-in-out;
+    transition: opacity 0.35s ease-in-out;
+}
+:hover::-moz-placeholder {
+    opacity: 1;
+    -moz-transition: opacity 0.35s ease-in-out;
+    transition: opacity 0.35s ease-in-out;
+}
+:hover:-ms-input-placeholder {
+    opacity: 1;
+    -ms-transition: opacity 0.35s ease-in-out;
+    transition: opacity 0.35s ease-in-out;
+}
+
+/* Place Holder CSS for Focus */
+:focus::-webkit-input-placeholder {
+    opacity: 0;
+    -webkit-transition: opacity 0.35s ease-in-out;
+    transition: opacity 0.35s ease-in-out;
+}
+:focus:-moz-placeholder {
+    opacity: 0;
+    -moz-transition: opacity 0.35s ease-in-out;
+    transition: opacity 0.35s ease-in-out;
+}
+:focus::-moz-placeholder {
+    opacity: 0;
+    -moz-transition: opacity 0.35s ease-in-out;
+    transition: opacity 0.35s ease-in-out;
+}
+:focus:-ms-input-placeholder {
+    opacity: 0;
+    -ms-transition: opacity 0.35s ease-in-out;
+    transition: opacity 0.35s ease-in-out;
+}
+#footer {
+    width:100%;
+    border-top: 2px solid #DB9255;
+    height:50px;
+    position:absolute;
+    bottom:0;
+    left:0;
+}
+ul{
+    list-style-type: none;
+    margin-right: 10%;
+}
+li{
+    display: inline;
+    float: right;
+    padding-left: 5px;
+    padding-right: 5px;
 }

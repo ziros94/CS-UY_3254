@@ -27,27 +27,31 @@ header("Location:home.php");
             </form>
         </div>
     </div>
+
     <fieldset class="signup">
         <form method="post" action="signup.php">
             <div class="form-group">
                 <label for="signup_user">Username</label>
-                <input type="text" id="signup_user" name="signup_user">
+                <input type="text" id="signup_user" name="signup_user" placeholder="username">
             </div>
             <div class="form-group">
                 <label for="signup_pw">Password</label>
-                <input type="password" id="signup_pw" name="signup_pw">
+                <input type="password" id="signup_pw" name="signup_pw" placeholder="********">
             </div>
             <div class="form-group">
                 <label for="signup_email">Email:</label>
-                <input type="text" id="signup_email" name="signup_email">
+                <input class="borders" type="text" id="signup_email" name="signup_email" placeholder="example@me.com">
             </div>
             <div style="padding-top: 20px;">
                 <button id="signup_btn" name="signup_btn">Sign Up!</button>
             </div>
         </form>
     </fieldset>
-
-
-
+    <div id="footer">
+        <ul>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">About Us</a></li>
+        </ul>
+    </div>
 </body>
 </html>
