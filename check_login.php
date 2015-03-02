@@ -8,7 +8,7 @@
 session_start();
 $username=$_POST["username"];
 $password=$_POST["password"];
-$lines = file("users.txt",FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+$lines = file("txt/users.txt",FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 $user_count=0;
 foreach($lines as $line){
     $pieces = explode(",",$line);

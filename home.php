@@ -15,23 +15,37 @@ $username = $_SESSION['username']
 <!DOCTYPE html>
 <html>
 <head>
-<Title>News Feed</Title>
+    <title>Home</title>
+    <link href="css/index.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Dosis&effect=outline' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<h1 style="display: inline;">Welcome <?php echo $username ?></h1>
-<div style="display: inline-block;">
-    <form action="logout.php">
-        <button type="submit">Log Out</button>
-    </form>
+<div>
 </div>
-<div style="text-align: center;">
-    <form>
-        <p>Write a message:</p>
-        <textarea rows="10" cols="30" style="resize: none;"></textarea>
-        <br>
-        <input type="submit" value="Send">
-    </form>
+<div class="header" >
+    <div class="logo">
+        <h1 class="font-effect-outline"><a href="index.php">CommunityBlock</a></h1>
+    </div>
+    <div style="display:inline-block;vertical-align: baseline;">
+        <a style="font-size: 18px;" href="profile.php?username=<?echo $username;?>">Profile</a>
+    </div>
+    <div class="login">
+        <form action="logout.php">
+            <button type="submit" class="btn">Log Out</button>
+        </form>
+    </div>
+</div>
+<div style="padding-left: 20px;padding-right: 20px;">
+    <h1>Welcome <?php echo $username ?>!</h1>
+    <div style="text-align: center;">
+        <form action="create_tweet.php" method="post">
+            <p>Write a message:</p>
+            <textarea rows="10" cols="30" style="resize: none;" name="tweet"></textarea>
+            <br>
+            <input type="submit" value="Send" name="submit_tweet" class="btn">
+        </form>
+    </div>
+</div>
 
-</div>
 </body>
 </html>

@@ -13,7 +13,7 @@ if (isset($_SESSION['logged_in']))
 }
 $username = $_POST['signup_user'];
 $email = $_POST['signup_email'];
-$lines = file("users.txt",FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+$lines = file("txt/users.txt",FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 $not_exists = true;
 foreach($lines as $line){
     $pieces = explode(",",$line);
@@ -33,7 +33,7 @@ foreach($lines as $line){
 if($not_exists){
     $password = $_POST["signup_pw"];
     $user_string = $username.",".$password.",".$email;
-    $fp = fopen('users.txt', 'a') or die("Can't find file");
+    $fp = fopen('txt/users.txt', 'a') or die("Can't find file");
     fwrite($fp,$user_string."\n");
     fclose($fp);
     header("Refresh:3;url=index.php");

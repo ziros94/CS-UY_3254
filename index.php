@@ -11,7 +11,6 @@ header("Location:home.php");
     <title>CommunityBlock</title>
     <link href="css/index.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Dosis&effect=outline' rel='stylesheet' type='text/css'>
-
 </head>
 <body>
     <div class="header" >
