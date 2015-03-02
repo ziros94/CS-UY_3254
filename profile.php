@@ -45,6 +45,8 @@ fclose($fp);
     </div>
     <div style="margin-left: 20px;margin-top: 20px;">
         <button class="btn"><a href="add_follower.php?followed=<?echo $username;?>">Follow <?echo $username;?>!</a></button>
+    </div><div style="margin-left: 20px;margin-top: 20px;">
+        <button class="btn"><a href="remove_follower.php?followed=<?echo $username;?>">Unfollow <?echo $username;?>!</a></button>
     </div>
     <div style="text-align: center"><?echo "<h1>$username's Messages</h1>"; ?>
         <?

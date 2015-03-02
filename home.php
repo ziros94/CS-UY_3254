@@ -10,7 +10,8 @@ if (!isset($_SESSION['logged_in']))
 {
     header("Location:index.php");
 }
-$username = $_SESSION['username']
+$username = $_SESSION['username'];
+date_default_timezone_set("America/New_York");
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,7 +46,30 @@ $username = $_SESSION['username']
             <input type="submit" value="Send" name="submit_tweet" class="btn">
         </form>
     </div>
+<div style="text-align: center;">
+<div style="display:inline-block;">
+    <?echo "<h1>$username's Community Messages</h1>"; ?>
+<?php
+$data=file("txt/followers.txt");
+$followed=array("mina");
+foreach($data as $line) {
+    $line=trim($line);
+    $pieces=explode("\t",$line);
+    if($pieces[0] === $_SESSION['username']) {
+        $followed[] = $pieces[1];
+    }
+}
+$fp=fopen("txt/tweets.txt","r") or die("Cannot find file");
+while($line=fgets($fp)){
+    $pieces=explode("\t",$line);
+    if (in_array($pieces[0],$followed)){
+        echo "<div><h3 style='display:inline-block;width: 400px;margin-left:0 '>$pieces[0]: $pieces[1]&nbsp;</h3><h4 style='display: inline;'>". date('d/m/Y g:i a', strtotime($pieces[2]))."</h4></div>";
+    }
+}
+fclose($fp);
+?>
 </div>
-
+</div>
+</div>
 </body>
 </html>

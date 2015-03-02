@@ -1,2 +1,3 @@
 alan	mina
 mina	alan
+mina	tiffany
