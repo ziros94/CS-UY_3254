@@ -1,3 +1,12 @@
+body{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family: 'Dosis', sans-serif;
+}
 .input{
     padding: 5px;
     height: 30px;
@@ -6,23 +15,13 @@
     border-radius: 10px;
     background-clip: content-box; /* support: IE9+ */
     background-color: #ddbd28;
-    outline: none;
+    outline: 0;
     text-indent: .5rem;
-}
-body{
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+
 }
 .input[type=text]:focus,.input[type=password]:focus{
 @include box-shadow(0 0 5px rgba(81, 203, 238, 1));
     border: 2px solid rgba(81, 203, 238, 1);
-}
-label,button,.logo > h1{
-    font-family: 'Dosis', sans-serif;
 }
 .header{
     padding-left: 20px;
@@ -39,7 +38,7 @@ label,button,.logo > h1{
     font-size:0;
     line-height:0;
 }
-#login_btn,#signup_btn{
+.btn{
     font-family: 'Dosis', sans-serif;
     vertical-align: middle;
     font-size: 16px ;
@@ -57,11 +56,10 @@ label,button,.logo > h1{
     cursor: pointer;
     color: #db7731;
 }
-#login_btn:hover,#signup_btn:hover{
+.btn:hover{
     background: #DB9255;
     color: white;
 }
-
 .logo{
     display: inline-block;
     border: 2px solid #dd9455;
@@ -99,8 +97,6 @@ label,button,.logo > h1{
 }
 .signup > form > div > label{
     display:inline-block;
-}
-.signup > form > div > label{
     width:100px;
 }
 .form-group{
@@ -109,85 +105,13 @@ label,button,.logo > h1{
 .form-group > input{
     text-align: center;
 }
-/* Place Holder CSS */
-::-webkit-input-placeholder {
-    text-align: center;
-    opacity: 0.75;
-    -webkit-transition: opacity 0.35s ease-in-out;
-    transition: opacity 0.35s ease-in-out;
-    color:black;
-}
-:-moz-placeholder {
-    text-align: center;
-    opacity: 0.75;
-    -moz-transition: opacity 0.35s ease-in-out;
-    transition: opacity 0.35s ease-in-out;
-}
-::-moz-placeholder {
-    text-align: center;
-    opacity: 0.75;
-    -moz-transition: opacity 0.35s ease-in-out;
-    transition: opacity 0.35s ease-in-out;
-}
-:-ms-input-placeholder {
-    text-align: center;
-    opacity: 0.75;
-    -ms-transition: opacity 0.35s ease-in-out;
-    transition: opacity 0.35s ease-in-out;
-}
-
-/* Place Holder CSS for hover */
-:hover::-webkit-input-placeholder {
-    opacity: 1;
-    -webkit-transition: opacity 0.35s ease-in-out;
-    transition: opacity 0.35s ease-in-out;
-}
-:hover:-moz-placeholder {
-    opacity: 1;
-    -moz-transition: opacity 0.35s ease-in-out;
-    transition: opacity 0.35s ease-in-out;
-}
-:hover::-moz-placeholder {
-    opacity: 1;
-    -moz-transition: opacity 0.35s ease-in-out;
-    transition: opacity 0.35s ease-in-out;
-}
-:hover:-ms-input-placeholder {
-    opacity: 1;
-    -ms-transition: opacity 0.35s ease-in-out;
-    transition: opacity 0.35s ease-in-out;
-}
-
-/* Place Holder CSS for Focus */
-:focus::-webkit-input-placeholder {
-    opacity: 0;
-    -webkit-transition: opacity 0.35s ease-in-out;
-    transition: opacity 0.35s ease-in-out;
-}
-:focus:-moz-placeholder {
-    opacity: 0;
-    -moz-transition: opacity 0.35s ease-in-out;
-    transition: opacity 0.35s ease-in-out;
-}
-:focus::-moz-placeholder {
-    opacity: 0;
-    -moz-transition: opacity 0.35s ease-in-out;
-    transition: opacity 0.35s ease-in-out;
-}
-:focus:-ms-input-placeholder {
-    opacity: 0;
-    -ms-transition: opacity 0.35s ease-in-out;
-    transition: opacity 0.35s ease-in-out;
-}
-
 /* footer */
 #footer {
     width:100%;
     border-top: 2px solid #DB9255;
-    height:50px;
-    position:absolute;
-    bottom:0;
-    left:0;
+    position: relative;
+    margin-top: 100px;
+    margin-bottom: 0;
 }
 #footer-ul{
     list-style-type: none;

@@ -9,7 +9,7 @@ header("Location:home.php");
 <html>
 <head>
     <title>CommunityBlock</title>
-    <link href="css/index.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Dosis&effect=outline' rel='stylesheet' type='text/css'>
 
 </head>
@@ -24,7 +24,7 @@ header("Location:home.php");
                 <input class="input" type="text" id="username" name="username">
                 <label for="password">Password:</label>
                 <input class="input" type="password" id="password" name="password">
-                <button type="submit" id="login_btn" name="login">Log In</button>
+                <button type="submit" class="btn" name="login">Log In</button>
             </form>
         </div>
     </div>
@@ -33,18 +33,18 @@ header("Location:home.php");
         <form method="post" action="signup.php">
             <div class="form-group">
                 <label for="signup_user">Username</label>
-                <input class="input" type="text" id="signup_user" name="signup_user" placeholder="username">
+                <input class="input" type="text" id="signup_user" name="signup_user">
             </div>
             <div class="form-group">
                 <label for="signup_pw">Password</label>
-                <input class="input" type="password" id="signup_pw" name="signup_pw" placeholder="********">
+                <input class="input" type="password" id="signup_pw" name="signup_pw">
             </div>
             <div class="form-group">
                 <label for="signup_email">Email:</label>
-                <input class="input" type="text" id="signup_email" name="signup_email" placeholder="example@me.com">
+                <input class="input" type="text" id="signup_email" name="signup_email">
             </div>
             <div style="padding-top: 20px;">
-                <button id="signup_btn" name="signup_btn">Sign Up!</button>
+                <button class="btn" name="signup_btn" type="submit">Sign Up!</button>
             </div>
         </form>
     </fieldset>

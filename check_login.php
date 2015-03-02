@@ -5,7 +5,6 @@
  * Date: 2/10/15
  * Time: 7:58 PM
  */
-ob_start();
 session_start();
 $username=$_POST["username"];
 $password=$_POST["password"];
@@ -20,6 +19,5 @@ foreach($lines as $line){
         break;
     }
 }
+header("Refresh:3;url=index.php");
 echo "Wrong username or password";
-
-ob_end_flush();

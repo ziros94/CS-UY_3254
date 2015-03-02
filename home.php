@@ -18,11 +18,20 @@ $username = $_SESSION['username']
 <Title>News Feed</Title>
 </head>
 <body>
-<h1>Welcome <?php echo $username ?></h1>
-<div style="float: right;">
+<h1 style="display: inline;">Welcome <?php echo $username ?></h1>
+<div style="display: inline-block;">
     <form action="logout.php">
         <button type="submit">Log Out</button>
     </form>
+</div>
+<div style="text-align: center;">
+    <form>
+        <p>Write a message:</p>
+        <textarea rows="10" cols="30" style="resize: none;"></textarea>
+        <br>
+        <input type="submit" value="Send">
+    </form>
+
 </div>
 </body>
 </html>
