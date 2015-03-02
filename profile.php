@@ -10,6 +10,7 @@ if (!isset($_SESSION['logged_in']))
 {
     header("Location:index.php");
 }
+date_default_timezone_set("America/New_York");
 $username=$_GET["username"];
 $fp=fopen("txt/tweets.txt","r") or die("Cannot find file");
 $message_list=array();
@@ -20,7 +21,6 @@ while($line=fgets($fp)){
         $message_datetime=$pieces[2];
         $message_list[$message_datetime]=$message;
     }
-
 }
 fclose($fp);
 ?>
@@ -37,6 +37,9 @@ fclose($fp);
         <div class="logo">
             <h1 class="font-effect-outline"><a href="index.php">CommunityBlock</a></h1>
         </div>
+        <div style="display:inline-block;vertical-align: baseline;">
+            <a style="font-size: 18px;" class="profile" href="profile.php?username=<?echo $_SESSION['username'];?>">Profile</a>
+        </div>
         <div class="login">
             <form action="logout.php">
                 <button type="submit" class="btn">Log Out</button>
@@ -51,7 +54,7 @@ fclose($fp);
     <div style="text-align: center"><?echo "<h1>$username's Messages</h1>"; ?>
         <?
         foreach($message_list as $key=>$value){
-            echo "<div><h3 style='display:inline'>$value</h3><h3 style='display:inline;padding-left: 20px;'>$key</h3></div>";
+            echo "<div><h3 style='display:inline'>$value</h3><h3 style='display:inline;padding-left: 20px;'>".date('d/m/Y g:i a', strtotime($key))."</h3></div>";
         }
         ?>
     </div>

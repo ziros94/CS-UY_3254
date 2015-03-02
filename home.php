@@ -10,7 +10,6 @@ if (!isset($_SESSION['logged_in']))
 {
     header("Location:index.php");
 }
-$username = $_SESSION['username'];
 date_default_timezone_set("America/New_York");
 ?>
 <!DOCTYPE html>
@@ -28,7 +27,7 @@ date_default_timezone_set("America/New_York");
         <h1 class="font-effect-outline"><a href="index.php">CommunityBlock</a></h1>
     </div>
     <div style="display:inline-block;vertical-align: baseline;">
-        <a style="font-size: 18px;" href="profile.php?username=<?echo $username;?>">Profile</a>
+        <a style="font-size: 18px;" class="profile" href="profile.php?username=<?echo $_SESSION['username'];;?>">Profile</a>
     </div>
     <div class="login">
         <form action="logout.php">
@@ -37,7 +36,7 @@ date_default_timezone_set("America/New_York");
     </div>
 </div>
 <div style="padding-left: 20px;padding-right: 20px;">
-    <h1>Welcome <?php echo $username ?>!</h1>
+    <h1>Welcome <?php echo $_SESSION['username'] ?>!</h1>
     <div style="text-align: center;">
         <form action="create_tweet.php" method="post">
             <p>Write a message:</p>
@@ -48,10 +47,10 @@ date_default_timezone_set("America/New_York");
     </div>
 <div style="text-align: center;">
 <div style="display:inline-block;">
-    <?echo "<h1>$username's Community Messages</h1>"; ?>
+    <?echo "<h1>".$_SESSION['username']."'s Community Messages</h1>"; ?>
 <?php
 $data=file("txt/followers.txt");
-$followed=array("mina");
+$followed=array($_SESSION['username']);
 foreach($data as $line) {
     $line=trim($line);
     $pieces=explode("\t",$line);
@@ -63,7 +62,7 @@ $fp=fopen("txt/tweets.txt","r") or die("Cannot find file");
 while($line=fgets($fp)){
     $pieces=explode("\t",$line);
     if (in_array($pieces[0],$followed)){
-        echo "<div><h3 style='display:inline-block;width: 400px;margin-left:0 '>$pieces[0]: $pieces[1]&nbsp;</h3><h4 style='display: inline;'>". date('d/m/Y g:i a', strtotime($pieces[2]))."</h4></div>";
+        echo "<div><h3 style='display:inline-block;width: 400px;margin-left:0 '><a href='profile.php?username=$pieces[0]'> $pieces[0]</a>: $pieces[1]&nbsp;</h3><h4 style='display: inline;'>". date('d/m/Y g:i a', strtotime($pieces[2]))."</h4></div>";
     }
 }
 fclose($fp);

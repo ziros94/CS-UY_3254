@@ -10,12 +10,15 @@ body{
 a{
     text-decoration: none;
     color: inherit;
-    font-weight: bold;
-    font-size: 20px;
 }
 a:hover{
     color:red;
 }
+.profile{
+    font-weight: bold;
+    font-size: 20px;
+}
+
 .input{
     padding: 5px;
     height: 30px;
