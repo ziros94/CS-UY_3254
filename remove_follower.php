@@ -12,23 +12,15 @@ if (!isset($_SESSION['logged_in']))
 }
 $followed=$_GET["followed"];
 
-$DELETE = $_SESSION['username']."\t".$followed;
-
-$data = file("txt/followers.txt");
-
-$out = array();
-
-foreach($data as $line) {
-    if(trim($line) != $DELETE) {
-        $out[] = $line;
-    }
+$DELETE = $_SESSION['username']."|".$followed;
+$fp = stream_socket_client("tcp://localhost:13002", $errno, $errstr, 5);
+if (!$fp) {
+    echo $errstr;
+    exit(1);
 }
-
-$fp = fopen("txt/followers.txt", "w+");
-flock($fp, LOCK_EX);
-foreach($out as $line) {
-    fwrite($fp, $line);
-}
-flock($fp, LOCK_UN);
+fwrite($fp,"remove-follower"."~".$DELETE) or die("Could not send data to server\n");
+$result = fgets($fp);
 fclose($fp);
+echo $result;
+
 header("Location:profile.php?username=$followed");

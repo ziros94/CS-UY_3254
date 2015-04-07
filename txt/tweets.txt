@@ -1,4 +1,13 @@
-alan	hello	Monday, 02-Mar-15 01:27:38 EST
-alan	how r u	Monday, 02-Mar-15 02:04:30 EST
-mina	hello world!	Monday, 02-Mar-15 03:15:18 EST
-mina	i love using community block!	Monday, 02-Mar-15 16:25:30 EST
+alan|hello|Monday, 02-Mar-15 01:27:38 EST
+alan|how r u|Monday, 02-Mar-15 02:04:30 EST
+mina|hello world!|Monday, 02-Mar-15 03:15:18 EST
+mina|i love using community block!|Monday, 02-Mar-15 16:25:30 EST
+alan|hiiiiiiiiiiiiiiiiiiiiiiiiii|Monday, 06-Apr-15 03:21:24 EDT
+alan|hello|Monday, 06-Apr-15 03:32:05 EDT
+alan|hello|Monday, 06-Apr-15 15:22:31 EDT
+alan|hi|Monday, 06-Apr-15 15:27:12 EDT
+alan|hello|Monday, 06-Apr-15 15:36:22 EDT
+alan|hello|Monday, 06-Apr-15 16:33:13 EDT
+alan|hello|Monday, 06-Apr-15 17:02:30 EDT
+alan|yoyoyo|Monday, 06-Apr-15 17:03:27 EDT
+harry|heo everyone :)|Monday, 06-Apr-15 17:07:37 EDT

@@ -1,3 +1,8 @@
-alan,1234,example@me.com
-tiffany,1234,tiff@tff@.com
-mina,1234,mina@mina.com
+alan|1234|example@me.com
+tiffany|1234|tiff@tff@.com
+mina|1234|mina@mina.com
+amy|1234|amy@amy.com
+jessie|1234|j@jessie.com
+harry|1234|h@h.com
+naz,1234,naz@n.com
+jennifer,1234,jenny@j.com

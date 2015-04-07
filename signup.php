@@ -13,10 +13,20 @@ if (isset($_SESSION['logged_in']))
 }
 $username = $_POST['signup_user'];
 $email = $_POST['signup_email'];
-$lines = file("txt/users.txt",FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+$fp = stream_socket_client("tcp://localhost:13002", $errno, $errstr, 5);
+if (!$fp) {
+    echo $errstr;
+    exit(1);
+}
+fwrite($fp,"get-users") or die("Could not send data to server\n");
+$result = fgets($fp);
+fclose($fp);
+$lines= explode("`",$result);
 $not_exists = true;
 foreach($lines as $line){
-    $pieces = explode(",",$line);
+    $pieces = explode("|",$line);
+
     if(strcasecmp($username,$pieces[0]) === 0 ){
         $not_exists=false;
         header("Refresh:3;url=index.php");
@@ -33,10 +43,14 @@ foreach($lines as $line){
 if($not_exists){
     $password = $_POST["signup_pw"];
     $user_string = $username.",".$password.",".$email;
-    $fp = fopen('txt/users.txt', 'a') or die("Can't find file");
-    fwrite($fp,$user_string."\n");
+    $fp = stream_socket_client("tcp://localhost:13002", $errno, $errstr, 5);
+    if (!$fp) {
+        echo $errstr;
+        exit(1);
+    }
+    fwrite($fp,"add-user"."~".$user_string) or die("Could not send data to server\n");
     fclose($fp);
-    header("Refresh:3;url=index.php");
+//    header("Refresh:3;url=index.php");
     echo "SUCCESSFULLY CREATED AN ACCOUNT";
 }
 

@@ -1,0 +1,4 @@
+mina	alan
+mina	tiffany
+alan	mina
+alan	harry
