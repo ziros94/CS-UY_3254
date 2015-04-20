@@ -143,9 +143,10 @@ void deleteFollower(const string &followers){
 	}
 }
 void *connectHandler(void *sock){
-	
 	char		buff[MAXLINE];
 	int connfd = *(int*)sock;
+	//detach thread from main thread
+	pthread_detach(pthread_self());
 	vector<string> data_tokens;
     read(connfd,buff,255);
 	string token;
@@ -178,9 +179,10 @@ void *connectHandler(void *sock){
 		deleteFollower(data_tokens[1]);
 	}
 	memset(&buff, 0, sizeof(buff));
-	cout << sock << flush;
+	printf("Hello from new thread - got %d\n", sock);
 	close(connfd);
-
+	//terminate thread
+	pthread_exit(NULL);	
 }
 int main(int argc, char **argv) {
     int			listenfd, connfd, *new_sock;  // Unix file descriptors
@@ -235,10 +237,8 @@ int main(int argc, char **argv) {
             perror("could not create thread");
             return 1;
         }
-        // 6. Close the connection with the current client and go back
-        //    for another.
-        pthread_join(sniffer_thread , NULL);
     }
+    
     if (connfd < 0)
     {
         perror("accept failed");
