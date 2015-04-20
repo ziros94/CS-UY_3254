@@ -26,31 +26,34 @@ $lines= explode("`",$result);
 $not_exists = true;
 foreach($lines as $line){
     $pieces = explode("|",$line);
-
+    // echo $pieces[0].$pieces[1].$pieces[2];
     if(strcasecmp($username,$pieces[0]) === 0 ){
         $not_exists=false;
-        header("Refresh:3;url=index.php");
+        // header("Refresh:3;url=index.php");
         echo "Username is already taken";
         break;
     }
     if(strcasecmp($email,$pieces[2]) === 0){
         $not_exists=false;
-        header("Refresh:3;url=index.php");
+        // header("Refresh:3;url=index.php");
         echo "Email is already taken";
         break;
     }
 }
 if($not_exists){
     $password = $_POST["signup_pw"];
-    $user_string = $username.",".$password.",".$email;
+    $user_string = $username."|".$password."|".$email;
     $fp = stream_socket_client("tcp://localhost:13002", $errno, $errstr, 5);
     if (!$fp) {
         echo $errstr;
         exit(1);
     }
+    $password = $_POST["signup_pw"];
+    $user_string = $username."|".$password."|".$email;
+    echo $user_string;
     fwrite($fp,"add-user"."~".$user_string) or die("Could not send data to server\n");
     fclose($fp);
-//    header("Refresh:3;url=index.php");
+    header("Refresh:3;url=index.php");
     echo "SUCCESSFULLY CREATED AN ACCOUNT";
 }
 

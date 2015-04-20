@@ -4,5 +4,12 @@ mina|1234|mina@mina.com
 amy|1234|amy@amy.com
 jessie|1234|j@jessie.com
 harry|1234|h@h.com
-naz,1234,naz@n.com
-jennifer,1234,jenny@j.com
+naz|1234|naz@n.com
+jennifer|1234|jenny@j.com
+sho|1234|sho@gmail.com
+hillary|123|hil
+harrrry|123|123
+jenny|123|jen123
+henry|123|hen12
+lucy|1234|lucylu@hi.com
+tiffanylieu|1234|tiff@tiff.com

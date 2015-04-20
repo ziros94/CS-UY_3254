@@ -16,7 +16,6 @@
 #include <string>
 #include <vector>
 #include <fstream>
-#include <thread>
 #include <mutex>
 #include <pthread.h>
 #define	MAXLINE		4096	// max text line length
@@ -26,7 +25,9 @@
 #define PORT_NUM        13002
 #define NUM_THREADS     5
 using namespace std;
+mutex myMutex;
 void getUsers(int connfd){
+	// lock_guard<mutex> g(myMutex);
 	ifstream myfile ("txt/users.txt");
 	string line;
 	string output="";
@@ -43,10 +44,10 @@ void getUsers(int connfd){
 		myfile.clear();
 		myfile.seekg(0, myfile.beg);
 		write(connfd,output.c_str(),output.size());
-
 	}
 }
 void getTweets(int connfd){
+	// lock_guard<mutex> g(myMutex);
 	ifstream myfile ("txt/tweets.txt");
 	string line;
 	string output="";
@@ -66,6 +67,7 @@ void getTweets(int connfd){
 	}
 }
 void getFollowers(int connfd){
+	// lock_guard<mutex> g(myMutex);
 	ifstream myfile ("txt/followers.txt");
 	string line;
 	string output="";
@@ -84,7 +86,8 @@ void getFollowers(int connfd){
 		write(connfd,output.c_str(),output.size());
 	}
 }
-void addUser(const string &user,int connfd){
+void addUser(const string &user){
+	lock_guard<mutex> g(myMutex);
 	ofstream myfile("txt/users.txt", ios::app);
 	if(!myfile.is_open()){
 	cerr << "File not found"<<endl;
@@ -92,10 +95,10 @@ void addUser(const string &user,int connfd){
 	else{
 		myfile << user<<endl;
 		myfile.close();
-		//write(connfd,user.c_str(),user.size());
 	}
 }
-void createTweet(string tweet,int connfd){
+void createTweet(string tweet){
+	lock_guard<mutex> g(myMutex);
 	ofstream myfile("txt/tweets.txt", ios::app);
 	if(!myfile.is_open()){
 	cerr << "File not found"<<endl;
@@ -103,10 +106,10 @@ void createTweet(string tweet,int connfd){
 	else{
 		myfile<<tweet<<endl;
 		myfile.close();
-		// write(connfd,tweet.c_str(),tweet.size());
 	}
 }
 void addFollower(const string &followers){
+	lock_guard<mutex> g(myMutex);
 	ofstream myfile("txt/followers.txt", ios::app);
 	if(!myfile.is_open()){
 	cerr << "File not found"<<endl;
@@ -117,6 +120,7 @@ void addFollower(const string &followers){
 	}
 }
 void deleteFollower(const string &followers){
+	lock_guard<mutex> g(myMutex);
 	ifstream myfile ("txt/followers.txt");
 	if(!myfile.is_open()){
 	cerr << "File not found"<<endl;
@@ -138,11 +142,50 @@ void deleteFollower(const string &followers){
 		rename("txt/temp.txt","txt/followers.txt");
 	}
 }
-int main(int argc, char **argv) {
-    int			listenfd, connfd;  // Unix file descriptors
-    struct sockaddr_in	servaddr;          // Note C use of struct
-    char		buff[MAXLINE];
+void *connectHandler(void *sock){
+	
+	char		buff[MAXLINE];
+	int connfd = *(int*)sock;
+	vector<string> data_tokens;
+    read(connfd,buff,255);
+	string token;
+	string data = string(buff);
+	//Insert data into stringstream
+	stringstream ss(data);
+	while(getline(ss, token, '~')){
+		data_tokens.push_back(string(token));
+	}
+	cout << data_tokens[0]<<endl<<flush;
+	if(data_tokens[0]=="get-users"){
+		getUsers(connfd);
+	}
+	else if(data_tokens[0]=="get-tweets"){
+		getTweets(connfd);
+	}
+	else if(data_tokens[0]=="get-followers"){
+		getFollowers(connfd);
+	}
+	else if(data_tokens[0]=="add-user"){
+		addUser(data_tokens[1]);
+	}
+	else if(data_tokens[0]=="add-tweet"){
+		createTweet(data_tokens[1]);
+	}
+	else if(data_tokens[0]=="add-follower"){
+		addFollower(data_tokens[1]);
+	}
+	else if(data_tokens[0]=="remove-follower"){
+		deleteFollower(data_tokens[1]);
+	}
+	memset(&buff, 0, sizeof(buff));
+	cout << sock << flush;
+	close(connfd);
 
+}
+int main(int argc, char **argv) {
+    int			listenfd, connfd, *new_sock;  // Unix file descriptors
+    struct sockaddr_in	servaddr;          // Note C use of struct
+    
     // 1. Create the socket
     if ((listenfd = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
         perror("Unable to create a socket");
@@ -171,8 +214,6 @@ int main(int argc, char **argv) {
         perror("Unable to listen");
         exit(3);
     }
-    
-
     for ( ; ; ) {
         // 5. Block until someone connects.
         //    We could provide a sockaddr if we wanted to know details of whom
@@ -180,48 +221,28 @@ int main(int argc, char **argv) {
         //    Last arg is where to put the size of the sockaddr if
         //    we asked for one
 		fprintf(stderr, "Ready to connect.\n");
-			if ((connfd = accept(listenfd, (SA *) NULL, NULL)) == -1) {
-				perror("accept failed");
-				exit(4);
+		if ((connfd = accept(listenfd, (SA *) NULL, NULL)) == -1) {
+			perror("accept failed");
+			exit(4);
 		}
 		fprintf(stderr, "Connected\n");
         // We had a connection.  Do whatever our task is.
-		vector<string> data_tokens;
-        read(connfd,buff,255);
-		string token;
-		string data = string(buff);
-		//Insert data into stringstream
-		stringstream ss(data);
-		while(getline(ss, token, '~')){
-			data_tokens.push_back(string(token));
-		}
-		cout << data_tokens[0]+"\n"<<flush;
-		if(data_tokens[0]=="get-users"){
-			getUsers(connfd);
-		}
-		else if(data_tokens[0]=="get-tweets"){
-			getTweets(connfd);
-		}
-		else if(data_tokens[0]=="get-followers"){
-			getFollowers(connfd);
-		}
-		else if(data_tokens[0]=="add-user"){
-			addUser(data_tokens[1],connfd);
-		}
-		else if(data_tokens[0]=="add-tweet"){
-			createTweet(data_tokens[1],connfd);
-		}
-		else if(data_tokens[0]=="add-follower"){
-			addFollower(data_tokens[1]);
-		}
-		else if(data_tokens[0]=="remove-follower"){
-			deleteFollower(data_tokens[1]);
-		}
-		memset(&buff, 0, sizeof(buff));
+        pthread_t sniffer_thread;
+        new_sock = new int;
+        *new_sock = connfd;
+        if( pthread_create( &sniffer_thread , NULL ,  connectHandler , (void*) new_sock) < 0)
+        {
+            perror("could not create thread");
+            return 1;
+        }
         // 6. Close the connection with the current client and go back
         //    for another.
-        cout << &connfd << flush;
-        close(connfd);
+        pthread_join(sniffer_thread , NULL);
+    }
+    if (connfd < 0)
+    {
+        perror("accept failed");
+        return 1;
     }
 }
 

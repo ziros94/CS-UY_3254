@@ -16,7 +16,6 @@
 #include <string>
 #include <vector>
 #include <fstream>
-#include <thread>
 #include <mutex>
 #include <pthread.h>
 #define	MAXLINE		4096	// max text line length
